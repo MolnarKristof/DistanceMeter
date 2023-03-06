@@ -1,1 +1,0 @@
-olvass el
