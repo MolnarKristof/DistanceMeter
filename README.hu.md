@@ -6,3 +6,9 @@
     - distance -> measuredDistance
 3. measuredDistance -> 7 szegmenses kijelzőre
 
+# 1. A távolságmérő programozása
+
+A megvalósítás kódja: 
+```py
+
+```
