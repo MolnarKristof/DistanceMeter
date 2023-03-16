@@ -12,12 +12,18 @@ A megvalósítás kódja:
 ```py
 import RPi.GPIO as GPIO                    #GPIO library importálása
 import time                                #time library importálása
+from adafruit_ht16k33 import segments
 GPIO.setmode(GPIO.BCM)                     #GPIO számozás kiválasztása 
 TRIG = 23                                  #23-as tüske hozzárendelése a TRIG kimenethez
 ECHO = 24                                  #24-es tüske hozzárendelése az ECHO bemenethez
 print ("Mérés folyamatban")
 GPIO.setup(TRIG,GPIO.OUT)                  #Trigger tüske beállítása kimenetnek
 GPIO.setup(ECHO,GPIO.IN)                   #Echo tüske beállítása bemenetnek
+
+GPIO.setwarning(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.cleanup()
+
 while True:
   GPIO.output(TRIG, False)                
   print ("Várakozás a szenzorértékre")
@@ -32,10 +38,31 @@ while True:
   pulse_duration = pulse_end - pulse_start 
   distance = pulse_duration * 17150        
   distance = round(distance, 2)            
-  if distance > 2 and distance < 400:      
+
+
+***
+
+pinSwitch = 12 # in
+GPIO.setup(pinSwitch, GPIO.IN)
+
+def measuredDistance(channel):
+    distance = measuredDistance
+    *******
+
+
+try:
+    while True:
+        if GPIO.input(pinSwitch) == 0:
+            measuredDistance(1)
+            ****
+if distance > 2 and distance < 400:      
     print ("Távolság:",distance - 0.5,"cm")  
-  else:
+else:
     print ("Túl nagy érték!!")
 
-                   
+
+GPIO.add_event_detect(pinSwitch, GPIO.FALLING, callback=measuredDistance, bouncetime=200)
+
+
+
 ```
