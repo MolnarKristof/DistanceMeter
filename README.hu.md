@@ -45,10 +45,12 @@ while True:
 pinSwitch = 12 # in
 GPIO.setup(pinSwitch, GPIO.IN)
 
-def measuredDistance(channel):
-    distance = measuredDistance
-    *******
 
+def getMeasuredDistance():
+    distanceMeter = measuredDistance()
+    distance = measured.distance
+    distance = round(distance, 2)
+    return distance
 
 try:
     while True:
