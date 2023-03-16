@@ -1,6 +1,6 @@
 # A feladat lépései
 1. A távolságmérő programozása
-    - Távolság > `distance` változóba
+    - Távolság -> `distance` változóba
     - Kiírás a képernyőre
 2. Mintavételezés kapcsolóval
     - distance -> measuredDistance
