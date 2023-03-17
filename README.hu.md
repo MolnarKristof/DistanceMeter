@@ -6,7 +6,8 @@
     - distance -> measuredDistance
     - eseménykezelő készítése ami kattintásra hívja a függvényt
 3. measuredDistance -> 7 szegmenses kijelzőre
-
+    - Megmért távolság kiírása a 7 szemgenses kijelzőre
+    - 
 # 1. A távolságmérő programozása
 
 A megvalósítás kódja: 
@@ -30,8 +31,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 display = segments.Seg7x4(i2c)
 
 GPIO.setmode(GPIO.BCM)
-#display.marquee("CPU Temperature")
-#time.sleep(2)
+
 
 # Clear the display.
 display.fill(0)
@@ -51,12 +51,11 @@ GPIO.setup(ECHO,GPIO.IN)                   #Echo tüske beállítása bemenetnek
 pinS = 12
 GPIO.setup(pinS, GPIO.IN)
 
-# Our function on what to do when the button is pressed
+
 memory = 0
 
 
-def Save(channel):
-    global memory
+def Measure(channel):
     global memory
     distance - 0.5
     if distance > 2 and distance < 400:      
@@ -68,7 +67,7 @@ def Save(channel):
     else:
         print ("Túl nagy érték!!")
 
-GPIO.add_event_detect(pinS, GPIO.FALLING, callback=Save, bouncetime=500)
+GPIO.add_event_detect(pinS, GPIO.FALLING, callback=Measure, bouncetime=500)
 
 
 distance = 0
@@ -88,17 +87,9 @@ try:
       pulse_duration = pulse_end - pulse_start 
       distance = pulse_duration * 17150        
       distance = round(distance, 2)            
-      #if distance > 2 and distance < 400:      
-        #print ("Távolság:",distance - 0.5,"cm")
-        
-        #distanceString = str(distance - 0.5)[:5].ljust(5,"0")                             
-        #display.print(distanceString) 
-        
-      #else:
-        #print ("Túl nagy érték!!") 
 
 except KeyboardInterrupt:
-    print("Vége: Pinek lekapcsolva")
+    print("Távolság mérő kikapcsolva")
     display.fill(0)
     GPIO.cleanup()
 
