@@ -3,10 +3,10 @@
     - Távolság -> `distance` változóba
     - Kiírás a képernyőre
 2. Mintavételezés kapcsolóval
-    - distance -> measuredDistance
+    - distance -> 'distance'
     - eseménykezelő készítése ami kattintásra hívja a függvényt
 3.  distance -> 7 szegmenses kijelzőre
     - distance értékének kiküldése a 7 szegmenses kijelzőnek
-    - kijelenítés a kijelzőn
+    - megjelenítés a kijelzőn
 
 
