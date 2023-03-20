@@ -76,7 +76,7 @@ distance = 0
 try:
     while True:
       GPIO.output(TRIG, False)                
-      print ("Várakozás a szenzorértékre")
+      print ("Várakozás a gomb lenyomására")
       time.sleep(2)                            
       GPIO.output(TRIG, True)                  
       time.sleep(0.00001)                      
