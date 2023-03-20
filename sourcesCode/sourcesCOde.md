@@ -5,7 +5,7 @@ A megvalósítás kódja:
 import RPi.GPIO as GPIO                    #GPIO library importálása
 import time
 
-from gpiozero import CPUTemperature
+
 
 #Import all board pins.
 import board
@@ -45,7 +45,7 @@ GPIO.setup(pinS, GPIO.IN)
 memory = 0
 
 
-def Measure(channel):
+def Save(channel):
     global memory
     distance - 0.5
     if distance > 2 and distance < 400:      
@@ -57,7 +57,7 @@ def Measure(channel):
     else:
         print ("Túl nagy érték!!")
 
-GPIO.add_event_detect(pinS, GPIO.FALLING, callback=Measure, bouncetime=500)
+GPIO.add_event_detect(pinS, GPIO.FALLING, callback=Save, bouncetime=500)
 
 
 distance = 0
