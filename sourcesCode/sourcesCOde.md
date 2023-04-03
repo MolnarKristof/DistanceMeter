@@ -7,17 +7,16 @@ import time
 
 
 
-#Import all board pins.
+# Importálja az összes board pint
 import board
 import busio
 
-# Import the HT16K33 LED segment module.
+# Importálja a HT16K33 LED segments modult
 from adafruit_ht16k33 import segments
 
-# Create the I2C interface.
+# Megcsinálja az I2C felületet
 i2c = busio.I2C(board.SCL, board.SDA)
-# Create the LED segment class.
-# This creates a 7 segment 4 character display:
+# Megcsinálja a kijelző változóját
 display = segments.Seg7x4(i2c)
 
 GPIO.setmode(GPIO.BCM)
@@ -29,7 +28,7 @@ display.fill(0)
 
 
 #time library importálása
-                     #GPIO számozás kiválasztása
+#GPIO számozás kiválasztása
 GPIO.cleanup()
 TRIG = 23                                  #23-as tüske hozzárendelése a TRIG kimenethez
 ECHO = 24                                  #24-es tüske hozzárendelése az ECHO bemenethez
@@ -41,12 +40,9 @@ GPIO.setup(ECHO,GPIO.IN)                   #Echo tüske beállítása bemenetnek
 pinS = 12
 GPIO.setup(pinS, GPIO.IN)
 
-
-memory = 0
-
+# A megmért távolságot lekéri a gombnyomás után és kiírja a képernyőre
 
 def Save(channel):
-    global memory
     distance - 0.5
     if distance > 2 and distance < 400:      
         print ("Távolság:",distance - 0.5,"cm")
@@ -59,6 +55,8 @@ def Save(channel):
 
 GPIO.add_event_detect(pinS, GPIO.FALLING, callback=Save, bouncetime=500)
 
+
+# Távolság mérése
 
 distance = 0
 
@@ -77,6 +75,9 @@ try:
       pulse_duration = pulse_end - pulse_start 
       distance = pulse_duration * 17150        
       distance = round(distance, 2)            
+
+
+# Program leállítása 
 
 except KeyboardInterrupt:
     print("Távolság mérő kikapcsolva")
